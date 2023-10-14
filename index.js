@@ -26,7 +26,7 @@ app.get('/users', async (req, res) => {
   const pageAsNumber = Number.parseInt(req.query.page);
   const sizeAsNumber = Number.parseInt(req.query.size);
 
-  let page = 0;
+  let page = 1;
   if(!Number.isNaN(pageAsNumber) && pageAsNumber > 0){
     page = pageAsNumber;
   }
@@ -38,7 +38,7 @@ app.get('/users', async (req, res) => {
 
   const usersWithCount = await User.findAndCountAll({
     limit: size,
-    offset: page * size
+    offset: (page - 1) * size
   });
   res.send({
     content: usersWithCount.rows,
