@@ -7,7 +7,7 @@ sequelize.sync({ force: true }).then(async () => {
     const user = {
       username: `user${i}`,
       email: `user${i}@mail.com`,
-      password: 'P4ssword'
+      password: 'Password'
     }
     await User.create(user);
   }
